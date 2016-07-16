@@ -6,6 +6,7 @@ import speedtest
 import thingspeak
 import traceback
 import json
+import os
 
 rootLogger = logging.getLogger('')
 rootLogger.setLevel(logging.INFO)
@@ -23,7 +24,9 @@ def main():
     global channel
 
     try:
-        with open('thingspeak.json') as config_file:
+        config_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'thingspeak.json')
+        
+        with open(config_file_path) as config_file:
             config = json.load(config_file)
 
         channel_id = config["channel"]

@@ -41,7 +41,7 @@ def main():
 
         logging.info('Ping %dms; Download: %2f; Upload %2f', ping, download, upload)
         channel = thingspeak.Channel(id=channel_id, write_key=write_key)
-        response = channel.update({1: ping, 2: download/(1000.0*1000.0)*8, 3: upload/(1000.0*1000.0)*8})
+        response = channel.update({1: ping, 2: download, 3: upload})
         print(response)
     except KeyboardInterrupt:
         print('\nCancelling...')
